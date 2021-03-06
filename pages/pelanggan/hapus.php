@@ -4,7 +4,7 @@
 
     if(isset($_GET["id"])){
         // Prepared statement untuk menghapus data
-        $query = $db->prepare("DELETE FROM pelanggan WHERE id=:id");
+        $query = $db->prepare("DELETE FROM user WHERE id=:id");
         $query->bindParam(":id", $_GET["id"]);
         
         // Jalankan Perintah SQL

@@ -1,4 +1,28 @@
-<?php require_once("../auth.php"); ?>
+<?php 
+
+require_once("../auth.php"); 
+require_once("../config.php");
+
+//hitung semua data pelanggan
+$sqlHitungPelanggan = $db->prepare("SELECT COUNT(*) hitung FROM user");
+$sqlHitungPelanggan->execute();
+
+$resultHitungPelanggan = $sqlHitungPelanggan->fetch(PDO::FETCH_ASSOC);
+
+
+//hitung semua data transaksi
+$sqlHitungTransaksi = $db->prepare("SELECT COUNT(*) hitung FROM transaksi");
+$sqlHitungTransaksi->execute();
+
+$resultHitungTransaksi = $sqlHitungTransaksi->fetch(PDO::FETCH_ASSOC);
+
+//hitung semua data karyawan
+$sqlHitungKaryawan = $db->prepare("SELECT COUNT(*) hitung FROM admin");
+$sqlHitungKaryawan->execute();
+
+$resultHitungKaryawan = $sqlHitungKaryawan->fetch(PDO::FETCH_ASSOC);
+
+?>
 
 
 <!DOCTYPE html>
@@ -42,11 +66,33 @@
             </div>
 
             <div class="col-md-8">
-                <form action="" method="post" />
-                <div class="form-group">
-                    <textarea class="form-control" placeholder="Apa yang kamu pikirkan?"></textarea>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h6>Total Data Pelanggan :</h6>
+                                <span style="font-size:44px;font-weight:700;color:blue"><?php echo $resultHitungPelanggan['hitung']; ?></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h6>Total Data Transaksi :</h6>
+                                <span style="font-size:44px;font-weight:700;color:green"><?php echo $resultHitungTransaksi['hitung']; ?></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h6>Total Data Karyawan :</h6>
+                                <span style="font-size:44px;font-weight:700;"><?php echo $resultHitungKaryawan['hitung']; ?></span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                </form>
 
             </div>
 

@@ -13,7 +13,6 @@
     if(isset($_GET['cari'])){
         $cari = $_GET['cari'];
     }
-       
 
 ?>
 
@@ -60,9 +59,9 @@
                     <div class="card-body">
                         <a href="tambah.php" class="btn btn-primary">Tambah</a>
                         <br>
-                        <h5 class="text-center">Data Karyawan</h5>
+                        <h5 class="text-center">Data Pelanggan</h5>
                         <form action="" method="get" style="float:right">
-                            <input type="text"  name="cari" placeholder="Cari Data User">
+                            <input type="text"  name="cari" placeholder="Cari Nama Pelanggan">
                             <input type="submit" class="btn btn-primary" value="CARI">
                             <a href="list.php" class="btn btn-success">RESET</a>
                         </form>
@@ -71,7 +70,7 @@
                          if(isset($_GET['cari'])){
                             
                             $cari = $_GET['cari'];
-                            $data = $db->prepare("SELECT * from user where id like '%".$cari."%'");
+                            $data = $db->prepare("SELECT * from user where nama like '%".$cari."%'");
                             
                             $data->execute();
                             $resultSearch = $data->fetchAll(PDO::FETCH_ASSOC);
@@ -105,13 +104,13 @@
                             $i = 1;
                             foreach ($resultSearch as $user) {?>
                                 <tr>
-                                    <th scope="row"><?php echo $i++ ?></th>
+                                <th scope="row"><?php echo $i++ ?></th>
                                     <td><?php echo $user['nama'] ?></td>
                                     <td><?php echo $user['alamat'] ?></td>
                                     <td><?php echo $user['nomor_telp'] ?></td>
-                                    <td><?php echo $user['jk'] == 0 ? 'Karyawan': 'Manager' ?></td>
+                                    <td><?php echo $user['jk'] == 0 ? 'Laki-Laki': 'Perempuan' ?></td>
                                     <td><?php echo $user['kota'] ?></td>
-                                    <td><?php echo $user['email'] == 0 ? 'Laki-laki' : 'Perempuan'?></td>
+                                    <td><?php echo $user['email']?></td>
                                     <td><?php echo date("d/m/Y", strtotime($user['created_at']));  ?></td>
                                     <td>
                                         <?php
@@ -161,7 +160,7 @@
                                     <td><?php echo $user['nama'] ?></td>
                                     <td><?php echo $user['alamat'] ?></td>
                                     <td><?php echo $user['nomor_telp'] ?></td>
-                                    <td><?php echo $user['Jk'] == 0 ? 'Laki-Laki': 'Perempuan' ?></td>
+                                    <td><?php echo $user['jk'] == 0 ? 'Laki-Laki': 'Perempuan' ?></td>
                                     <td><?php echo $user['kota'] ?></td>
                                     <td><?php echo $user['email']?></td>
                                     <td><?php echo date("d/m/Y", strtotime($user['created_at']));  ?></td>

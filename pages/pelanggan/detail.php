@@ -3,16 +3,16 @@
     require_once("../../auth.php");
     require_once("../../config.php");
 
-    if(!isset($_GET['nip'])){
-        die("Error: NIP Tidak Dimasukkan");
+    if(!isset($_GET['id'])){
+        die("Error: ID User Tidak Dimasukkan");
     }
     
-    $query = $db->prepare("SELECT * FROM `admin` WHERE nip = :nip");
-    $query->bindParam(":nip", $_GET['nip']);
+    $query = $db->prepare("SELECT * FROM `user` WHERE id = :id");
+    $query->bindParam(":id", $_GET['id']);
     $query->execute();
 
     if($query->rowCount() == 0){
-        die("Error: NIP Karyawan Tidak Ditemukan");
+        die("Error: ID User Tidak Ditemukan");
     } else {
         $data = $query->fetch();
     }
@@ -49,9 +49,9 @@
                         Dashboard
                     </a>
                     <a href="../produk/list.php" class="list-group-item list-group-item-action">Produk</a>
-                    <a href="../karyawan/list.php" class="list-group-item list-group-item-action active">Karyawan</a>
+                    <a href="../karyawan/list.php" class="list-group-item list-group-item-action">Karyawan</a>
                     <a href="../transaksi/list.php" class="list-group-item list-group-item-action">Transaksi</a>
-                    <a href="../pelanggan/list.php" class="list-group-item list-group-item-action">Pelanggan</a>
+                    <a href="../pelanggan/list.php" class="list-group-item list-group-item-action active">Pelanggan</a>
                     <a href="../feedback/list.php" class="list-group-item list-group-item-action">Feedback</a>
                 </div>
             </div>
@@ -61,9 +61,9 @@
                         <form action="" method="post">
                             <h5 class="text-capitalize">Data Karyawan <?php echo $data['nama'] ?></h5>
                             <div class="mb-2 row">
-                                <label for="staticEmail" class="col-sm-2 col-form-label">NIP</label>
+                                <label for="staticEmail" class="col-sm-2 col-form-label">ID Pelanggan</label>
                                 <div class="col-sm-10">
-                                    <label class="mt-2"><strong><?php echo $data['nip'] ?></strong></label>
+                                    <label class="mt-2"><strong><?php echo $data['id'] ?></strong></label>
                                 </div>
                             </div>
                             <div class="mb-2 row">
@@ -87,23 +87,18 @@
                                         name="nomor_telp">
                                 </div>
                             </div>
-                            <div class="mb-2 row" <?php  $_SESSION["admin"]["role"] == 1 ?>>
-                                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                            <div class="mb-2 row">
+                                <label for="staticEmail" class="col-sm-2 col-form-label">Provinsi</label>
                                 <div class="col-sm-10">
-                                    <input type="password" disabled value="<?php echo $data['password'] ?>" class="form-control"
-                                        id="inputPassword">
+                                    <input type="text" disabled class="form-control" value="<?php echo $data['provinsi'] ?>"
+                                        name="provinsi">
                                 </div>
                             </div>
                             <div class="mb-2 row">
-                                <label for="inputPassword" class="col-sm-2 col-form-label">Role</label>
+                                <label for="staticEmail" class="col-sm-2 col-form-label">Kota</label>
                                 <div class="col-sm-10">
-                                    <select class="form-select" disabled value="<?php echo $data['role'] ?>" name="role"
-                                        aria-label="Default select example">
-                                        <option value="<?php echo $data['role'] ?>" selected>
-                                            <?php echo $data['role'] == 0 ? 'Karyawan' : 'Manager' ?></option>
-                                        <option value="0">Karyawan</option>
-                                        <option value="1">Manager</option>
-                                    </select>
+                                    <input type="text" disabled class="form-control" value="<?php echo $data['kota'] ?>"
+                                        name="kota">
                                 </div>
                             </div>
                             <div class="mb-2 row">
@@ -119,14 +114,7 @@
                                 </div>
                             </div>
 
-                            <div class="mb-2 row" <?php echo (!empty($file_img)) ?  'has-error' : '';?>>
-                                <label for="staticEmail" class="col-sm-2 col-form-label">Gambar</label>
-                                <div class="col-sm-10">
-                                        <img src="<?php echo "../../file/".$data['file_img']; ?>" width="120" height="120" class="mt-2">
-                                </div>
-                            </div>
-
-                            <a class="btn btn-primary mt-3 mb-3 col-md-3" href="../karyawan/list.php"  style="float:right !important"
+                            <a class="btn btn-primary mt-3 mb-3 col-md-3" href="../pelanggan/list.php"  style="float:right !important"
                                > Kembali</a>
                         </form>
 

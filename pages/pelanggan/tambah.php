@@ -3,39 +3,34 @@
 require_once("../../config.php");
 require_once("../../auth.php");
 
-if(isset($_POST['user'])){
+if(isset($_POST['user_add'])){
 
     // filter data yang diinputkan
-        $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_STRING);
-        $nama = filter_input(INPUT_POST, 'nama', FILTER_SANITIZE_STRING);
-        $alamat = filter_input(INPUT_POST, 'alamat', FILTER_SANITIZE_STRING);
-        $nomor_telp = filter_input(INPUT_POST, 'nomor_telp', FILTER_SANITIZE_STRING);
-        $jk = filter_input(INPUT_POST, 'jk', FILTER_SANITIZE_STRING);
-        $kota = filter_input(INPUT_POST, 'kota', FILTER_SANITIZE_STRING);
-        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
-        $created_at = filter_input(INPUT_POST, 'created_at', FILTER_SANITIZE_STRING);
-        
-    
-    // enkripsi password
-     $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+    $nama = filter_input(INPUT_POST, 'nama', FILTER_SANITIZE_STRING);
+    $alamat = filter_input(INPUT_POST, 'alamat', FILTER_SANITIZE_STRING);
+    $nomor_telp = filter_input(INPUT_POST, 'nomor_telp', FILTER_SANITIZE_STRING);
+    $jk = filter_input(INPUT_POST, 'jk', FILTER_SANITIZE_STRING);
+    $kota = filter_input(INPUT_POST, 'kota', FILTER_SANITIZE_STRING);
+    $provinsi = filter_input(INPUT_POST, 'provinsi', FILTER_SANITIZE_STRING);
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
+    $created_at = filter_input(INPUT_POST, 'created_at', FILTER_SANITIZE_STRING);
 
-
-    // menyiapkan query
-    $sql = "INSERT INTO admin (id, nama, alamat,nomor_telp, jk, kota,  email, created_at ) 
-            VALUES (:id, :nama, :alamat, :nomor_telp, :jk, :kota, :email, :created_at)";
+    // menyiapkan query insert
+    $sql = "INSERT INTO user ( nama, alamat, nomor_telp, jk, kota, provinsi, email, created_at ) 
+            VALUES (:nama, :alamat, :nomor_telp, :jk, :kota, :provinsi, :email, :created_at)";
 
     $stmt = $db->prepare($sql);
 
     // bind parameter ke query
     $params = array(
-        ":id" => $id,
         ":nama" => $nama,
         ":alamat" => $alamat,
         ":nomor_telp" => $nomor_telp,
         ":jk" => $jk,
         ":kota" => $kota,
-        ":email" => $email
-        
+        ":provinsi" => $provinsi,
+        ":email" => $email,
+        ":created_at" => $created_at
     );
 
     // eksekusi query untuk menyimpan ke database
@@ -97,23 +92,18 @@ if(isset($_POST['user'])){
                     <form action="" method="POST" enctype="multipart/form-data">
 
                         <div class="form-group">
-                            <label for="id">No</label>
-                            <input class="form-control" type="text" name="id" placeholder="ID User" />
-                        </div>
-
-                        <div class="form-group">
                             <label for="nama">Nama Lengkap</label>
-                            <input class="form-control" type="text" name="nama" placeholder="Nama User" />
+                            <input class="form-control" type="text" name="nama" placeholder="Nama User" required/>
                         </div>
 
                         <div class="form-group">
                             <label for="nomor_telp">No Telp</label>
-                            <input class="form-control" type="text" name="nomor_telp" placeholder="No Telp User" />
+                            <input class="form-control" type="text" name="nomor_telp" maxlength="14" placeholder="No Telp User" required />
                         </div>
 
                         <div class="form-group">
                             <label>Jenis Kelamin</label>
-                            <select class="form-select" name="jk" aria-label="Default select example">
+                            <select class="form-select" name="jk" aria-label="Default select example" required>
                                 <option selected>Jenis Kelamin</option>
                                 <option value="0">Laki-laki</option>
                                 <option value="1">Perempuan</option>
@@ -121,13 +111,23 @@ if(isset($_POST['user'])){
                         </div>
 
                         <div class="form-group">
+                            <label for="kota">Alamat</label>
+                            <input class="form-control" type="text" name="alamat" placeholder="Alamat User" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="kota">Provinsi</label>
+                            <input class="form-control" type="text" name="provinsi" placeholder="Provinsi User"  required/>
+                        </div>
+
+                        <div class="form-group">
                             <label for="kota">Kota</label>
-                            <input class="form-control" type="text" name="kota" placeholder="Kota User" />
+                            <input class="form-control" type="text" name="kota" placeholder="Kota User"  required/>
                         </div>
                         
                         <div class="form-group">
                             <label for="email">E-mail</label>
-                            <input class="form-control" type="text" name="email" placeholder="E-mail User" />
+                            <input class="form-control" type="email" name="email" placeholder="E-mail User" required/>
                         </div>
 
                         <div class="form-group">
@@ -135,9 +135,7 @@ if(isset($_POST['user'])){
                             <input class="form-control" type="date" name="created_at"  />
                         </div>
 
-                        
-
-                        <input type="submit" class="btn btn-success btn-block mt-3" name="register" value="Daftar" />
+                        <input type="submit" class="btn btn-success btn-block mt-3" name="user_add" value="Daftar" />
 
                     </form>
 
