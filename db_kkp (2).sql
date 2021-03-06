@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2021 at 04:00 AM
+-- Generation Time: Mar 06, 2021 at 05:11 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -36,6 +36,7 @@ CREATE TABLE `admin` (
   `role` tinyint(1) NOT NULL,
   `nomor_telp` varchar(14) NOT NULL,
   `jk` varchar(5) NOT NULL,
+  `file_img` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -43,8 +44,10 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `nip`, `nama`, `email`, `password`, `role`, `nomor_telp`, `jk`, `created_at`) VALUES
-(2, '112', 'ilham', 'ilham@gmail.com', '$2y$10$shxrnBO4Yb8SQkn7vnexS.GrBQfrqoH4W06LxQppfuQFxCjMMydli', 1, '08977166220', '0', '2021-02-28 12:55:39');
+INSERT INTO `admin` (`id`, `nip`, `nama`, `email`, `password`, `role`, `nomor_telp`, `jk`, `file_img`, `created_at`) VALUES
+(2, '112', 'ilham', 'ilham@gmail.com', '$2y$10$shxrnBO4Yb8SQkn7vnexS.GrBQfrqoH4W06LxQppfuQFxCjMMydli', 1, '08977166220', '0', '', '2021-02-28 12:55:39'),
+(11, '122', 'winwin', 'loselose@gmail.com', '$2y$10$zxdUTWePhh6Tm/KVxO8B6ebBUoHjli6dLFfurUYfobDfQAPvnC5Ea', 0, '08586335498', '0', 'IMG_20210130_110807.jpg', '2021-03-05 17:12:16'),
+(13, '123', 'renjun', 'renjun@gmail.com', '$2y$10$iAZJFxb9H1ZhuwnSO5eFselNHtJOTLT4fHHOihBAutyWJBt8TEygG', 0, '0986345637', '0', 'IMG_20210128_163641.jpg', '2021-03-05 17:13:01');
 
 -- --------------------------------------------------------
 
@@ -61,6 +64,15 @@ CREATE TABLE `feedback` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`id`, `nama`, `nomor_telp`, `email`, `deskripsi`, `created_at`) VALUES
+(1, 'ilham', '08977166220', 'ilhamnurhakim378@gmail.com', 'ini deksripsi', '2021-03-06 06:20:38'),
+(2, 'aaa', '089723121', 'gilang@gmail.com', 'dada', '2021-03-06 06:24:14'),
+(4, 'haha@gmail.com', '081237812631', 'iasdasdasd@gmail.com', 'asdasda', '2021-03-06 06:26:11');
+
 -- --------------------------------------------------------
 
 --
@@ -75,7 +87,7 @@ CREATE TABLE `produk` (
   `stok` int(7) NOT NULL,
   `harga` int(10) NOT NULL,
   `view` int(11) NOT NULL DEFAULT 0,
-  `file_img` varchar(25) DEFAULT NULL,
+  `file_img` text DEFAULT NULL,
   `created_by` varchar(50) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -85,7 +97,13 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id`, `kode_barang`, `nama`, `deskripsi`, `stok`, `harga`, `view`, `file_img`, `created_by`, `created_at`) VALUES
-(1, 'K001', 'Keramik Model Kembang', 'ini adalah keramik model kembang 1 box isi 3', 10, 50000, 0, NULL, 'ilham', '2021-02-28 08:00:16');
+(4, 'A001', 'GRC Kerawangan Type A', 'Harga diatas termasuk harga permeter', 20, 550000, 5, 'grca.jpg', 'ilham', '2021-03-06 15:54:59'),
+(5, 'B001', 'GRC Kerawangan Type B', 'Harga diatas termasuk harga permeter', 20, 550000, 0, 'grcb.jpg', 'ilham', '2021-03-06 15:33:25'),
+(6, 'C001', 'GRC Kerawangan Type C', 'Harga diatas termasuk harga permeter', 18, 550000, 0, 'grcc.jpg', 'ilham', '2021-03-06 15:33:27'),
+(7, 'D001', 'GRC Masif Type D', 'Harga diatas termasuk harga permeter', 20, 550000, 5, 'grcd.jpg', 'ilham', '2021-03-06 15:57:12'),
+(8, 'E001', 'GRC Masif Type E', 'Harga diatas termasuk harga permeter', 20, 550000, 6, 'grce.jpg', 'ilham', '2021-03-06 16:10:52'),
+(9, 'F001', 'GRC Cladding Type F', 'Harga diatas termasuk harga permeter', 20, 550000, 0, 'grcf.jpg', 'ilham', '2021-03-06 15:33:44'),
+(10, 'G001', 'GRC Cladding Type G', 'Harga diatas termasuk harga permeter', 20, 475000, 0, 'grcg.jpg', 'ilham', '2021-03-06 15:33:49');
 
 -- --------------------------------------------------------
 
@@ -108,6 +126,14 @@ CREATE TABLE `transaksi` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `transaksi`
+--
+
+INSERT INTO `transaksi` (`id`, `tiket_trx`, `produk_id`, `kode_barang`, `nama`, `jumlah_jual`, `status`, `harga`, `total_bayar`, `id_admin`, `id_pelanggan`, `created_at`) VALUES
+(1, '123', 2, 'k003', 'grc karawangan transaksi', 5, 'DIPROSES', 150000, 750000, 0, 0, '2021-03-06 10:37:54'),
+(3, 'a003', 0, 'koo7', 'bata', 2, 'SELESAI', 12000, 24000, 112, 3, '2021-03-06 10:37:37');
+
 -- --------------------------------------------------------
 
 --
@@ -125,6 +151,15 @@ CREATE TABLE `user` (
   `email` varchar(250) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `nama`, `alamat`, `nomor_telp`, `jk`, `kota`, `provinsi`, `email`, `created_at`) VALUES
+(1, 'Nadiem', 'jl pekapuran', '0891231231', '1', 'Depok', 'Jakarta', 'nadiem@gmail.com', '2021-03-06 08:38:37'),
+(2, 'makarim', 'jl depok', '0182381231', '0', 'Depok', 'Jawa Tengah', 'makarim@gmail.com', '2021-03-06 08:41:31'),
+(3, 'jokowi', 'Jl pekapuran rt 02/04 Curug, Cimanggis, depok', '023812738121', 'Jenis Kela', 'Depok', 'Jawa Barat', 'joki@mailc.om', '2021-03-01 17:00:00');
 
 --
 -- Indexes for dumped tables
@@ -171,31 +206,31 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -2,6 +2,12 @@
 
 require_once("config.php");
 
+    //list semua data
+    $sqlGetProduk = $db->prepare("SELECT * FROM produk ORDER BY nama ASC");
+    $sqlGetProduk->execute();
+
+    $result = $sqlGetProduk->fetchAll(PDO::FETCH_ASSOC);
+
 if(isset($_POST['feedback_send'])){
 
     $nama = filter_input(INPUT_POST, 'nama', FILTER_SANITIZE_STRING);
@@ -91,8 +97,8 @@ if(isset($_POST['feedback_send'])){
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                             <div class="full">
                                 <div class="center-desk">
-                                    <div class="logo"><a href="#home"><img src="assets/images/logo.png"
-                                                style="max-width: 100%;"></a>
+                                    <div class="logo"><a href="#home"><img src="assets/images/logo.jpg"
+                                               width="130" height="80" ></a>
                                     </div>
                                 </div>
                             </div>
@@ -131,41 +137,22 @@ if(isset($_POST['feedback_send'])){
                                         </p>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="banner-image"><img src="assets/images/banner-image.png"
-                                                style="max-width: 100%;"></div>
+                                        <div class="banner-image"><img src="assets/images/home.jpg"
+                                                style="max-width: 100%;height:600px"></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="row ">
-                                    <div class="col-md-6 taital">
-                                        <h1>Quality<strong class="banner_taital">Products with breads sweet Den</strong>
-                                        </h1>
-                                        <p class="lorem_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                                <div class="col-md-6 taital">
+                                        <h1 class="taital">Berkualitas<strong class="banner_taital">
+                                                Produk yang baik</strong></h1>
+                                        <p class="lorem_text text-uppercase">produk grc pracetak teruji baik jika kualitas produk yang bertahan jangka panjang dan secara terus menerus dalam berbagai cuaca maupun suhu
                                         </p>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="banner-image"><img src="assets/images/banner-image.png"
-                                                style="max-width: 100%;"></div>
-                                    </div>
-                                    <!-- <div class="banner_bt">
-                                        <button class="bt_main"><a href="#">Read More</a></button>
-                                    </div> -->
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="row ">
-                                    <div class="col-md-6 taital">
-                                        <h1>Quality<strong class="banner_taital">Products with breads sweet Den</strong>
-                                        </h1>
-                                        <p class="lorem_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                                        </p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="banner-image"><img src="assets/images/banner-image.png"
-                                                style="max-width: 100%;"></div>
+                                        <div class="banner-image"><img src="assets/images/home2.jpg"
+                                                style="max-width: 100%;height:600px"></div>
                                     </div>
                                     <!-- <div class="banner_bt">
                                         <button class="bt_main"><a href="#">Read More</a></button>
@@ -195,7 +182,7 @@ if(isset($_POST['feedback_send'])){
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <div><img src="assets/images/cupcake-img.png" style="max-width: 100%;"></div>
+                    <div><img src="assets/images/logo.jpg" style="max-width: 100%;"></div>
                 </div>
                 <div class="col-md-6">
                     <h1 class="about_text"><strong>Tentang PT Delima Karya Putra</strong></h1>
@@ -214,99 +201,20 @@ if(isset($_POST['feedback_send'])){
             </div>
             <div class="product_section_2 images">
                 <div class="row">
+                <?php foreach($result as $data) { ?>
                     <div class="col-sm-4">
-                        <div class="images"><img src="assets/images/about-img1.png"
-                                style="max-width: 100%; width: 100%;">
+                        <div class="images"><img src="../../file/<?php echo $data['file_img'] ?>"
+                                style="max-width: 304px; height: 304px">
                         </div>
-                        <h2 class="den_text croissants"><a href="#">Croissants Breakfast</a></h2>
+                        <h2 class="den_text croissants"><a href="detail.php?kode_barang=<?php echo $data['kode_barang'] ?>"><?php echo $data['nama'] ?></a></h2>
                     </div>
-                    <div class="col-sm-4">
-                        <div class="images"><img src="assets/images/about-img2.png"
-                                style="max-width: 100%; width: 100%;">
-                        </div>
-                        <h2 class="den_text"><a href="#">Roll Cake</a></h2>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="images"><img src="assets/images/about-img3.png"
-                                style="max-width: 100%; width: 100%;">
-                        </div>
-                        <h2 class="den_text"><a href="#">BreadFrench Toast</a></h2>
-                    </div>
-
-
-
-                    <div class="col-sm-4">
-                        <div class="images"><img src="assets/images/about-img4.png"
-                                style="max-width: 100%; width: 100%;">
-                        </div>
-                        <h2 class="den_text"><a href="#">Cup Cake</a></h2>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="images"><img src="assets/images/about-img5.png"
-                                style="max-width: 100%; width: 100%;">
-                        </div>
-                        <h2 class="den_text"><a href="#">Donut</a></h2>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="images"><img src="assets/images/about-img6.png"
-                                style="max-width: 100%; width: 100%;">
-                        </div>
-                        <h2 class="den_text"><a href="#">Chocolate Cup Cake</a></h2>
-                    </div>
+                   <?php } ?>
                 </div>
             </div>
         </div>
     </div>
     <!-- product end-->
-    <!-- Gallery start-->
-    <div id="gallery" class="layout_padding2 gallery_section">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="gallery_main">
-                        <h1 class="gallery_taital"><strong><span class="our_text">Our</span> Gallery</strong></h1>
-                    </div>
-                </div>
-                <div class="col-sm-12 gallery_maain">
-                    <div class="row">
-                        <div class="col-sm-3 padding_0">
-                            <div class="gallery_blog">
-                                <img class="img-responive" src="assets/images/gallery-img1.png">
-                                <div class="overlay">
-                                    <h2>Breakfast Breads</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 padding_0">
-                            <div class="gallery_blog">
-                                <img class="img-responive" src="assets/images/gallery-img2.png">
-                                <div class="overlay">
-                                    <h2>Breakfast Breads</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 padding_0">
-                            <div class="gallery_blog">
-                                <img class="img-responive" src="assets/images/gallery-img3.png">
-                                <div class="overlay">
-                                    <h2>Breakfast Breads</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 padding_0">
-                            <div class="gallery_blog">
-                                <img class="img-responive" src="assets/images/gallery-img4.png">
-                                <div class="overlay">
-                                    <h2>Breakfast Breads</h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end Gallery-->
+    
     <!-- Touch start-->
     <div class="layout_padding gallery_section">
         <div class="container">
@@ -346,7 +254,7 @@ if(isset($_POST['feedback_send'])){
                     </div>
                     <div class="col-md-6">
                         <div class="images">
-                            <img src="assets/images/bread-img.png" style="max-width: 100%;">
+                            <img src="assets/images/logo.jpg" style="max-width: 100%;">
                         </div>
                     </div>
                 </div>
@@ -366,25 +274,23 @@ if(isset($_POST['feedback_send'])){
     </div>
     <!-- Touch end-->
     <!-- contact start-->
-    <div id="contact" class="contact_section">
+ 
+    <div id="contact" class="contact_section ">
         <div class="container">
             <div class="contact-taital">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h1 class="contact_text"><strong>Contact Us</strong></h1>
+                        <h1 class="contact_text"><strong>Kontak</strong></h1>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-6 col-md-6 col-lg-3">
-                    <h2 class="adderess_text">Adderess</h2>
-                    <div class="image-icon"><img src="assets/images/map-icon.png"><span class="email_text">Gb road 123
-                            london
-                            Uk </span></div>
-                    <div class="image-icon"><img src="assets/images/phone-icon.png"><span class="email_text">(+71)
-                            56982424536</span></div>
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <h2 class="adderess_text">Alamat</h2>
+                    <div class="image-icon"><img src="assets/images/map-icon.png"><span class="email_text">Jl. Raya Bogor, Km. 40,5 Cibinong - Bogor</span></div>
+                    <div class="image-icon"><img src="assets/images/phone-icon.png"><span class="email_text">+62 819-0499-5866 | Telp. (021) 8763218, 87915247</span></div>
                     <div class="image-icon"><img src="assets/images/email-icon.png"><span
-                            class="email_text">bacerim@gmail.com</span></div>
+                            class="email_text"> dmk_grc@yahoo.com</span></div>
                 </div>
             </div>
         </div>
