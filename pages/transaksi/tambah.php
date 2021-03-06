@@ -108,13 +108,6 @@ if(isset($_POST['tambah_transaksi'])){
                             <input class="form-control" type="text" name="harga" placeholder="Harga barang" />
                         </div>
 
-                        <div class="form-group">
-                            <label for="total_bayar">Total</label>
-                            <input class="form-control" type="text" name="total_bayar" placeholder="Total Pembayaran barang" />
-                        </div>
-
-
-
                         <input type="submit" class="btn btn-success btn-block mt-3" name="tambah_transaksi" value="Simpan" required />
                         <input type="reset" class="btn btn-danger btn-block mt-3" name="reset" value="Kosongkan"/>
 
