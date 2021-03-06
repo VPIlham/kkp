@@ -57,7 +57,7 @@ if(isset($_POST['feedback_send'])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
-    <title>Den</title>
+    <title>PT Delima Karya Putra</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -127,16 +127,12 @@ if(isset($_POST['feedback_send'])){
                                     <div class="col-md-6 taital">
                                         <h1 class="taital">Berkualitas<strong class="banner_taital">
                                                 Produk yang baik</strong></h1>
-                                        <p class="lorem_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                                        <p class="lorem_text text-uppercase">produk grc pracetak teruji baik jika kualitas produk yang bertahan jangka panjang dan secara terus menerus dalam berbagai cuaca maupun suhu
                                         </p>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="banner-image"><img src="assets/images/banner-image.png"
                                                 style="max-width: 100%;"></div>
-                                    </div>
-                                    <div class="banner_bt">
-                                        <button class="bt_main"><a href="#">Read More</a></button>
                                     </div>
                                 </div>
                             </div>
@@ -153,9 +149,9 @@ if(isset($_POST['feedback_send'])){
                                         <div class="banner-image"><img src="assets/images/banner-image.png"
                                                 style="max-width: 100%;"></div>
                                     </div>
-                                    <div class="banner_bt">
+                                    <!-- <div class="banner_bt">
                                         <button class="bt_main"><a href="#">Read More</a></button>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="carousel-item">
@@ -171,9 +167,9 @@ if(isset($_POST['feedback_send'])){
                                         <div class="banner-image"><img src="assets/images/banner-image.png"
                                                 style="max-width: 100%;"></div>
                                     </div>
-                                    <div class="banner_bt">
+                                    <!-- <div class="banner_bt">
                                         <button class="bt_main"><a href="#">Read More</a></button>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -203,10 +199,7 @@ if(isset($_POST['feedback_send'])){
                 </div>
                 <div class="col-md-6">
                     <h1 class="about_text"><strong>Tentang PT Delima Karya Putra</strong></h1>
-                    <p class="about_taital">consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim ad minim ve niam, quis nostrud exercitationconsectetur adipiscing
-                        elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                        veniam, quis nostrud exercitation</p>
+                    <p class="about_taital">Merupakan perusahaan anak bangsa yang konsisten dibidang fabrikasi dan aplikasi GRC di Indonesia. Memulai pekerjaan sejak tahun 1997 hingga saat ini PT.DELIMA KARYA PUTRA turut serta berperan dalam pembangunan di berbagai proyek yang berskala kecil maupun besar.</p>
                 </div>
             </div>
         </div>
@@ -365,6 +358,7 @@ if(isset($_POST['feedback_send'])){
             <div class="col-sm-12">
 
                 <div id="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1178.6692253724277!2d106.85015788221881!3d-6.451140859450004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMjcnMDQuNyJTIDEwNsKwNTEnMDEuMiJF!5e0!3m2!1sid!2sid!4v1615016225963!5m2!1sid!2sid" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
 
@@ -392,75 +386,10 @@ if(isset($_POST['feedback_send'])){
                     <div class="image-icon"><img src="assets/images/email-icon.png"><span
                             class="email_text">bacerim@gmail.com</span></div>
                 </div>
-                <div class="col-sm-6 col-md-6 col-lg-3">
-                    <h2 class="adderess_text">Useful Links</h2>
-                    <div class="image-icon"><img src="assets/images/bulit-icon.png"><span class="email_text">Bacerim
-                            Dictionary</span></div>
-                    <div class="image-icon"><img src="assets/images/bulit-icon.png"><span class="email_text">Help
-                            Links</span>
-                    </div>
-                    <div class="image-icon"><img src="assets/images/bulit-icon.png"><span class="email_text">bacerim
-                            Attitudes</span></div>
-                    <div class="image-icon"><img src="assets/images/bulit-icon.png"><span class="email_text">Call a
-                            Cutumer</span></div>
-                    <div class="image-icon"><img src="assets/images/bulit-icon.png"><span class="email_text">Help a
-                            Bacerim</span></div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-3">
-                    <h2 class="adderess_text">Overview</h2>
-                    <div class="image-icon"><img src="assets/images/bulit-icon.png"><span class="email_text">Bacerim
-                            Dictionary</span></div>
-                    <div class="image-icon"><img src="assets/images/bulit-icon.png"><span class="email_text">Help
-                            Links</span>
-                    </div>
-                    <div class="image-icon"><img src="assets/images/bulit-icon.png"><span class="email_text">bacerim
-                            Attitudes</span></div>
-                    <div class="social_icon">
-                        <ul>
-                            <li><a href="#"><img src="assets/images/fb-icon.png"></a></li>
-                            <li><a href="#"><img src="assets/images/twitter-icon.png"></a></li>
-                            <li><a href="#"><img src="assets/images/google-icon.png"></a></li>
-                            <li><a href="#"><img src="assets/images/linkedin-icon.png"></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-3">
-                    <h2 class="adderess_text">Instagram</h2>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="footer-img"><img src="assets/images/footer-img1.png" style="width: 100%;"></div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="footer-img"><img src="assets/images/footer-img2.png" style="width: 100%;"></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="footer-img"><img src="assets/images/footer-img2.png" style="width: 100%;"></div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="footer-img"><img src="assets/images/footer-img3.png" style="width: 100%;"></div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
     <!-- contact end-->
-    <!-- copyright start-->
-    <div class="copyright_section">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <p class="copyright_taital">2019 All Rights Reserved. <a href="https://html.design">Free html
-                            Templates</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- copyright end-->
 
     <!-- Javascript files-->
     <script src="assets/js/jquery.min.js"></script>
@@ -490,35 +419,6 @@ if(isset($_POST['feedback_send'])){
             });
         });
     </script>
-
-    <script>
-        // This example adds a marker to indicate the position of Bondi Beach in Sydney,
-        // Australia.
-        function initMap() {
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 11,
-                center: {
-                    lat: 40.645037,
-                    lng: -73.880224
-                },
-            });
-
-            var image = 'images/location_point.png';
-            var beachMarker = new google.maps.Marker({
-                position: {
-                    lat: 40.645037,
-                    lng: -73.880224
-                },
-                map: map,
-                icon: image
-            });
-        }
-    </script>
-    <!-- google map js -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8eaHt9Dh5H57Zh0xVTqxVdBFCvFMqFjQ&callback=initMap">
-    </script>
-    <!-- end google map js -->
-
 
 
 
