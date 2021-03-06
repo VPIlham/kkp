@@ -1,9 +1,6 @@
 <?php
  require_once("../../auth.php");
  require_once("../../config.php");
- 
-
-
 
 if(isset($_POST['tambah_transaksi'])){
     $tiket_trx = filter_input(INPUT_POST, 'tiket_trx', FILTER_SANITIZE_STRING);
