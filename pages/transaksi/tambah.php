@@ -2,35 +2,72 @@
  require_once("../../auth.php");
  require_once("../../config.php");
 
+ //panggil data barang
+ $sqlPanggilBarang = $db->prepare("SELECT * FROM produk ORDER BY nama ASC");
+ $sqlPanggilBarang->execute();
+
+ $resultBarang = $sqlPanggilBarang->fetchAll(PDO::FETCH_ASSOC);
+ 
+ //panggil data pelanggan
+ $sqlPanggilUser = $db->prepare("SELECT * FROM user ORDER BY nama ASC");
+ $sqlPanggilUser->execute();
+
+ $resultUser = $sqlPanggilUser->fetchAll(PDO::FETCH_ASSOC);
+
 if(isset($_POST['tambah_transaksi'])){
 
     $tiket_trx = filter_input(INPUT_POST, 'tiket_trx', FILTER_SANITIZE_STRING);
-    $kode_barang = filter_input(INPUT_POST, 'kode_barang', FILTER_SANITIZE_STRING);
     $nama = filter_input(INPUT_POST, 'nama', FILTER_SANITIZE_STRING);
     $jumlah_jual = filter_input(INPUT_POST, 'jumlah_jual', FILTER_SANITIZE_STRING);
-    $harga = filter_input(INPUT_POST, 'harga', FILTER_SANITIZE_STRING);
-    $total_bayar = filter_input(INPUT_POST, 'total_bayar', FILTER_SANITIZE_STRING);
     $created_at = filter_input(INPUT_POST, 'created_at', FILTER_SANITIZE_STRING);
+    $id_pelanggan = filter_input(INPUT_POST, 'id_pelanggan', FILTER_SANITIZE_STRING);
+
+    //cek kode barang 
+    $sqlKodeBarang = $db->prepare("SELECT * FROM produk where nama = '$nama'");
+    $sqlKodeBarang->execute();
+    $dataBarang = $sqlKodeBarang->fetch();
+
+    echo '<pre>';
+    print_r($sqlKodeBarang);
+    echo '</pre>';
+    
+    $ambilKodeBarang = $dataBarang['kode_barang'];
+    $ambilHargaBarang = $dataBarang['harga'];
+    $dataStok = $dataBarang['stok'];
+
+    //cek pelanggan
+    $sqlIdUser = $db->prepare("SELECT * FROM user where id = $id_pelanggan");
+    $sqlIdUser->execute();
+    $dataUser = $sqlIdUser->fetch();
             
     //menyiapkan query
-    $sql = "INSERT INTO transaksi ( kode_barang, nama, jumlah_jual, harga, total_bayar, created_at ) 
-    VALUES ( :kode_barang, :nama, :jumlah_jual, :harga, :total_bayar, :created_at)";
+    $sql = "INSERT INTO transaksi ( tiket_trx, kode_barang, nama, jumlah_jual, harga, total_bayar, id_admin, status, id_pelanggan, created_at ) 
+    VALUES (:tiket_trx, :kode_barang, :nama, :jumlah_jual, :harga, :total_bayar, :id_admin , :status, :id_pelanggan,:created_at)";
 
     $stmt = $db->prepare($sql);
 
     // bind parameter ke query
     $params = array(
         ":tiket_trx" => $tiket_trx,
-        ":kode_barang" => $kode_barang,
+        ":kode_barang" => $ambilKodeBarang,
         ":nama" => $nama,
+        ":id_admin" => $_SESSION["admin"]["nip"],
         ":jumlah_jual" => $jumlah_jual,
-        ":harga" => $harga,
-        ":total_bayar" => $total_bayar,
+        ":harga" => $ambilHargaBarang,
+        ":status" => 'DIPROSES',
+        ":id_pelanggan" => $dataUser['id'],
+        ":total_bayar" => $jumlah_jual  * $ambilHargaBarang ,
         ":created_at" => $created_at,
     );
+    
+    $saved = $stmt->execute($params);
+
+    //pengurangan stok
+    $sqlUpdateKodeBarang = $db->prepare("UPDATE produk set stok = $dataStok - $jumlah_jual where nama = '$nama' ");
+    $sqlUpdateKodeBarang->execute();
 
     // eksekusi query untuk menyimpan ke database
-    $saved = $stmt->execute($params);
+    
 
     // jika query simpan berhasil, maka produk sudah terdaftar
     // maka alihkan ke halaman list
@@ -44,7 +81,7 @@ if(isset($_POST['tambah_transaksi'])){
 <html lang="en">
 
 <head>
-    
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -86,40 +123,51 @@ if(isset($_POST['tambah_transaksi'])){
                 <p>&larr; <a href="list.php">Kembali</a>
 
 
-                    <form  method="POST" action="" >
+                    <form method="POST" action="">
 
                         <div class="form-group">
                             <label for="kode_barang">Kode Transaksi</label>
-                            <input class="form-control" type="text" name="kode_barang" placeholder="Kode barang " />
+                            <input class="form-control" type="text" name="tiket_trx" placeholder="Kode barang " />
                         </div>
 
                         <div class="form-group">
-                            <label for="nama">Nama Barang</label>
-                            <input class="form-control" type="text" name="nama" placeholder="Nama barang " />
+                            <label for="nama">Pilih Barang</label>
+                            <select class="form-select" aria-label="Default select example" name="nama">
+                                <option selected disabled>Pilih Barang</option>
+
+                                <?php foreach ($resultBarang as $barang) {?>
+                                <option value="<?php echo $barang['nama']  ?>"><?php echo $barang['nama'] ?></option>
+                                <?php } ?>
+                                
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nama">Pilih Pelanggan</label>
+                            <select class="form-select" aria-label="Default select example" name="id_pelanggan">
+                                <option selected disabled>Pilih Pelanggan</option>
+
+                                <?php foreach ($resultUser as $user) {?>
+                                <option value="<?php echo $user['id']  ?>"><?php echo $user['nama'] ?></option>
+                                <?php } ?>
+                                
+                            </select>
                         </div>
 
                         <div class="form-group">
                             <label for="jumlah_jual">Jumlah </label>
-                            <input class="form-control" type="text" name="jumlah_jual" placeholder="Jumlah penjualan barang" />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="harga">Harga </label>
-                            <input class="form-control" type="text" name="harga" placeholder="Harga barang" />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="total_bayar">Total </label>
-                            <input class="form-control" type="text" name="total_bayar" placeholder="Total barang" />
+                            <input class="form-control" type="text" onkeyup="this.value=this.value.replace(/[^\d]/,'')"
+                                name="jumlah_jual" placeholder="Jumlah Stok barang" />
                         </div>
 
                         <div class="form-group">
                             <label for="created_at">Tanggal </label>
-                            <input class="form-control" type="text" name="created_at" placeholder="Tanggal" />
+                            <input class="form-control" type="date" name="created_at" placeholder="Tanggal" />
                         </div>
 
-                        <input type="submit" class="btn btn-success btn-block mt-3" name="tambah_transaksi" value="Simpan" required />
-                        <input type="reset" class="btn btn-danger btn-block mt-3" name="reset" value="Kosongkan"/>
+                        <input type="submit" class="btn btn-success btn-block mt-3" name="tambah_transaksi"
+                            value="Simpan" required />
+                        <input type="reset" class="btn btn-danger btn-block mt-3" name="reset" value="Kosongkan" />
 
                     </form>
 
