@@ -22,6 +22,29 @@ $sqlHitungKaryawan->execute();
 
 $resultHitungKaryawan = $sqlHitungKaryawan->fetch(PDO::FETCH_ASSOC);
 
+//hitung semua data Produk
+$sqlHitungProduk = $db->prepare("SELECT COUNT(*) hitung FROM produk");
+$sqlHitungProduk->execute();
+
+$resultHitungProduk = $sqlHitungProduk->fetch(PDO::FETCH_ASSOC);
+
+//hitung semua data Feedback
+$sqlHitungFeedback = $db->prepare("SELECT COUNT(*) hitung FROM feedback");
+$sqlHitungFeedback->execute();
+
+$resultHitungFeedback = $sqlHitungFeedback->fetch(PDO::FETCH_ASSOC);
+
+//hitung total harga transaksi keseluruhan 
+$sqlHitungTotalTransaksi = $db->prepare("SELECT SUM(total_bayar) hitung FROM transaksi");
+$sqlHitungTotalTransaksi->execute();
+
+$resultHitungTotalTransaksi = $sqlHitungTotalTransaksi->fetch(PDO::FETCH_ASSOC);
+
+$sqlHitungTotalStok = $db->prepare("SELECT SUM(jumlah_jual) hitung FROM transaksi");
+$sqlHitungTotalStok->execute();
+
+$resultHitungTotalStok = $sqlHitungTotalStok->fetch(PDO::FETCH_ASSOC);
+
 ?>
 
 
@@ -89,6 +112,38 @@ $resultHitungKaryawan = $sqlHitungKaryawan->fetch(PDO::FETCH_ASSOC);
                             <div class="card-body text-center">
                                 <h6>Total Data Karyawan :</h6>
                                 <span style="font-size:44px;font-weight:700;"><?php echo $resultHitungKaryawan['hitung']; ?></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h6>Total Data Produk :</h6>
+                                <span style="font-size:44px;font-weight:700;"><?php echo $resultHitungProduk['hitung']; ?></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h6>Total Data Feedback :</h6>
+                                <span style="font-size:44px;font-weight:700;color:red"><?php echo $resultHitungFeedback['hitung']; ?></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h6>Total Harga Transaksi :</h6>
+                                 <span style="font-size:44px;font-weight:700;color:green">Rp. <?php echo $resultHitungTotalTransaksi['hitung']; ?>,-</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h6>Total Stok Terjual :</h6>
+                                 <span style="font-size:44px;font-weight:700;color:green"><?php echo $resultHitungTotalStok['hitung']; ?></span>
                             </div>
                         </div>
                     </div>
