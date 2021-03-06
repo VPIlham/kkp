@@ -10,15 +10,11 @@ $query = $db->prepare("SELECT * FROM transaksi WHERE id =:id");
 $query->bindParam(":id" , $_GET['id']);
 $query->execute();
 
-
-
 if($query->rowCount() == 0){
     die("Error:  Barang Tidak Ditemukan");
 } else {
     $data = $query->fetch();
 }
-
-
 
 if(isset($_POST['submit'])){
     
@@ -28,34 +24,26 @@ if(isset($_POST['submit'])){
     $harga = filter_input(INPUT_POST, 'harga', FILTER_SANITIZE_STRING);
     $total_bayar = filter_input(INPUT_POST, 'total_bayar', FILTER_SANITIZE_STRING);
     $createdat = filter_input(INPUT_POST, 'created_at', FILTER_SANITIZE_STRING);
+    $status = filter_input(INPUT_POST, 'status', FILTER_SANITIZE_STRING);
     
     
     //menyiapkan sql
-    $sql = "UPDATE trnasaksi set `kode_barang` =:kode_barang, `nama`=:nama, `jumlah_jual` =:jumlah_jual, `harga` =:harga,
+    $sql = "UPDATE transaksi set `kode_barang` =:kode_barang, `nama`=:nama, `status` = :status,`jumlah_jual` =:jumlah_jual, `harga` =:harga,
      `total_bayar` =:total_bayar, `created_at` =:created_at WHERE kode_barang =:kode_barang";
     
     $params = array(
         ":kode_barang" =>$kode_barang,
         ":nama" =>$nama,
+        ":status" => $status,
         ":jumlah_jual"=>$jumlah_jual,
         ":harga"=>$harga,
         ":total_bayar"=>$total_bayar,
         ":created_at"=> $createdat,
-        
     );
-
-    //echo '<pre>';
-    //    print_r($sql);
-    //echo '</pre>';
-
-    //return;
     
     //ekseskui quert untuk menyimpan ke database
     $stmt = $db->prepare($sql);
     $saved = $stmt->execute($params);
-
-  
-    
 
     header("Location: list.php");
       
@@ -100,10 +88,10 @@ if(isset($_POST['submit'])){
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-body">
-                        <form action="" method="post" >
+                        <form action="" method="post">
                             <h5 class="text-capitalize">Data Transakasi
                                 <?php echo isset($data['nama']) ? $data['nama'] : ''; ?></h5>
-                         
+
                             <div class="mb-2 row">
                                 <label for="staticEmail" class="col-sm-2 col-form-label">Kode Barang</label>
                                 <div class="col-sm-10">
@@ -144,11 +132,24 @@ if(isset($_POST['submit'])){
                                 <label for="staticEmail" class="col-sm-2 col-form-label">Total</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control"
-                                        value="<?php echo isset($data['total_bayar']) ? $data['total_bayar'] : ''; ?>" name="total_bayar">
+                                        value="<?php echo isset($data['total_bayar']) ? $data['total_bayar'] : ''; ?>"
+                                        name="total_bayar">
                                 </div>
                             </div>
 
-                           
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Status</label>
+                                <div class="col-sm-10">
+                                    <select class="form-select" value="<?php echo $data['status'] ?>" name="status" aria-label="Default select example"
+                                        required>
+                                        <option selected disabled ><?php echo $data['status'] ?></option>
+                                        <option value="DIPROSES">DIPROSES</option>
+                                        <option value="SEDANG DIKRIM">SEDANG DIKIRIM</option>
+                                        <option value="SELESAI">SELESAI</option>
+                                        <option value="GAGAL">GAGAL</option>
+                                    </select>
+                                </div>
+                            </div>
 
                             <input class="btn btn-primary mt-3 col-md-3" style="float:right !important" type="submit"
                                 name="submit">

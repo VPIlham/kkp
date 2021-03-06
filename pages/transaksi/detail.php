@@ -3,7 +3,7 @@
     require_once("../../config.php");
 
     if(!isset($_GET['id'])){
-        die("Error: Barang Tidak Ditemukan");
+        die("Error: Transaksi Tidak Ditemukan");
     }
 
     $query = $db->prepare("SELECT * FROM transaksi WHERE id =:id");
@@ -12,7 +12,7 @@
 
 
     if($query->rowCount() == 0){
-        die("Error: Data Barang Tidak Ditemukan");
+        die("Error: Data Transaksi Tidak Ditemukan");
     } else {
         $data = $query->fetch();
     }
@@ -102,7 +102,7 @@
                                 <label for="staticEmail" class="col-sm-2 col-form-label">Total</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" disabled
-                                        value="<?php echo isset($data['total']) ? $data['total'] : ''; ?>" name="total">
+                                        value="<?php echo isset($data['total_bayar']) ? $data['total_bayar'] : ''; ?>" name="total">
                                 </div>
                             </div>
 
@@ -110,7 +110,7 @@
                                 <label for="staticEmail" class="col-sm-2 col-form-label">Tanggal</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" disabled
-                                        value="<?php echo isset($data['tanggal']) ? $data['tanggal'] : ''; ?>" name="tanggal">
+                                        value="<?php echo isset($data['created_at']) ? $data['created_at'] : ''; ?>" name="tanggal">
                                 </div>
                             </div>
 

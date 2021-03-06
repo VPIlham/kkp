@@ -96,6 +96,7 @@
                                     <th scope="col">Jumlah Jual</th>
                                     <th scope="col">Harga</th>
                                     <th scope="col">Total</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col">Tanggal</th>
                                     <th scope="col"> Actions</th>
                                 </tr>
@@ -121,6 +122,7 @@
                                             <td><?php echo $user['jumlah_jual']?></td>
                                             <td><?php echo $user['harga']?></td>
                                             <td><?php echo $user['total_bayar']?></td>
+                                            <td><?php echo $user['status']?></td>
                                             <td><?php echo date("d/m/Y", strtotime($user['created_at']));  ?></td>
 
                                     <td>
@@ -158,6 +160,7 @@
                                     <th scope="col">Jumlah Jual</th>
                                     <th scope="col">Harga</th>
                                     <th scope="col">Total</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col">Tanggal</th>
                                     <th scope="col"> Actions</th>
                                 </tr>
@@ -174,6 +177,7 @@
                                             <td><?php echo $user['jumlah_jual']?></td>
                                             <td><?php echo $user['harga']?></td>
                                             <td><?php echo $user['total_bayar']?></td>
+                                            <td><?php echo $user['status']?></td>
                                             <td><?php echo date("d/m/Y", strtotime($user['created_at']));  ?></td>
                                     <td>
                                         <?php
@@ -199,9 +203,6 @@
 
                         <?php } ?>
 
-                       
-
-                      
                         <a href="cetak.php" target="_blank" class="btn btn-primary">Cetak PDF</a>
                     </div>
                 </div>

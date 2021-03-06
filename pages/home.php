@@ -35,7 +35,7 @@ $sqlHitungFeedback->execute();
 $resultHitungFeedback = $sqlHitungFeedback->fetch(PDO::FETCH_ASSOC);
 
 //hitung total harga transaksi keseluruhan 
-$sqlHitungTotalTransaksi = $db->prepare("SELECT SUM(total_bayar) hitung FROM transaksi");
+$sqlHitungTotalTransaksi = $db->prepare("SELECT SUM(total_bayar) hitung FROM transaksi where status = 'selesai'");
 $sqlHitungTotalTransaksi->execute();
 
 $resultHitungTotalTransaksi = $sqlHitungTotalTransaksi->fetch(PDO::FETCH_ASSOC);

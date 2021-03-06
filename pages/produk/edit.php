@@ -56,12 +56,6 @@ if(isset($_POST['submit'])){
     $stmt = $db->prepare($sql);
     $saved = $stmt->execute($params);
 
-    // echo '<pre>';
-    //     print_r($saved);
-    // echo '</pre>';
-
-    // return;
-
     header("Location: list.php");
       
 }
