@@ -112,10 +112,10 @@ if(isset($_POST['user'])){
                         </div>
 
                         <div class="form-group">
-                            <label>Role</label>
-                            <select class="form-select" name="role">
+                            <label>Jenis Kelamin</label>
+                            <select class="form-select" name="jk" aria-label="Default select example">
                                 <option selected>Jenis Kelamin</option>
-                                <option value="0">Laki-Laki</option>
+                                <option value="0">Laki-laki</option>
                                 <option value="1">Perempuan</option>
                             </select>
                         </div>
