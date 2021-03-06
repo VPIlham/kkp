@@ -98,6 +98,8 @@ if(isset($_POST['submit'])){
                     <a href="../produk/list.php" class="list-group-item list-group-actin active ">Produk</a>
                     <a href="../karyawan/list.php" class="list-group-item list-group-actin ">Karyawan</a>
                     <a href="../transaksi/list.php" class="list-group-item list-group-actin ">Transaksi</a>
+                    <a href="../pelanggan/list.php" class="list-group-item list-group-item-action">Pelanggan</a>
+                    <a href="../feedback/list.php" class="list-group-item list-group-item-action">Feedback</a>
                 </div>
             </div>
             <div class="col-md-9">

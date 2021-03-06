@@ -10,8 +10,6 @@
         // Jalankan Perintah SQL
         $query->execute();
 
-        echo 'test';
-
         // Alihkan ke index.php
         header("location: list.php");
     }

@@ -3,15 +3,6 @@
     require_once("../../auth.php");
     require_once("../../config.php");
 
-    // $link = mysqli_connect("localhost", "root", "", "db_kkp");
- 
-    // // Check connection
-    // if($link === false){
-    //     die("ERROR: Could not connect. " . mysqli_connect_error());
-    // }
-    
-    // $result = mysqli_query($link,"SELECT * FROM admin");
-
     //list semua data
     $sql = $db->prepare("SELECT * FROM admin ORDER BY nip ASC");
     $sql->execute();
@@ -60,6 +51,8 @@
                     <a href="../produk/list.php" class="list-group-item list-group-item-action">Produk</a>
                     <a href="list.php" class="list-group-item list-group-item-action active">Karyawan</a>
                     <a href="../transaksi/list.php" class="list-group-item list-group-item-action">Transaksi</a>
+                    <a href="../pelanggan/list.php" class="list-group-item list-group-item-action">Pelanggan</a>
+                    <a href="../feedback/list.php" class="list-group-item list-group-item-action">Feedback</a>
                 </div>
             </div>
             <div class="col-md-9">

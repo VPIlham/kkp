@@ -3,6 +3,7 @@
  require_once("../../config.php");
 
 if(isset($_POST['tambah_transaksi'])){
+
     $tiket_trx = filter_input(INPUT_POST, 'tiket_trx', FILTER_SANITIZE_STRING);
     $kode_barang = filter_input(INPUT_POST, 'kode_barang', FILTER_SANITIZE_STRING);
     $nama = filter_input(INPUT_POST, 'nama', FILTER_SANITIZE_STRING);
@@ -54,7 +55,7 @@ if(isset($_POST['tambah_transaksi'])){
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 </head>
 
-<body class="bg-light">
+<body>
 
     <div class="container mt-5">
         <div class="row">
@@ -76,6 +77,8 @@ if(isset($_POST['tambah_transaksi'])){
                     <a href="../produk/list.php" class="list-group-item list-group-item-action ">Produk</a>
                     <a href="../karyawan/list.php" class="list-group-item list-group-item-action ">Karyawan</a>
                     <a href="list.php" class="list-group-item list-group-item-action active">Transaksi</a>
+                    <a href="../pelanggan/list.php" class="list-group-item list-group-item-action">Pelanggan</a>
+                    <a href="../feedback/list.php" class="list-group-item list-group-item-action">Feedback</a>
                 </div>
             </div>
             <div class="col-md-6">

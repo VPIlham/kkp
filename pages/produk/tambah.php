@@ -89,6 +89,8 @@ if(isset($_POST['tambah_produk'])){
                     <a href="../produk/list.php" class="list-group-item list-group-item-action active">Produk</a>
                     <a href="list.php" class="list-group-item list-group-item-action ">Karyawan</a>
                     <a href="../transaksi/list.php" class="list-group-item list-group-item-action">Transaksi</a>
+                    <a href="../pelanggan/list.php" class="list-group-item list-group-item-action">Pelanggan</a>
+                    <a href="../feedback/list.php" class="list-group-item list-group-item-action">Feedback</a>
                 </div>
             </div>
             <div class="col-md-6">

@@ -3,15 +3,6 @@
     require_once("../../auth.php");
     require_once("../../config.php");
 
-    // $link = mysqli_connect("localhost", "root", "", "db_kkp");
- 
-    // // Check connection
-    // if($link === false){
-    //     die("ERROR: Could not connect. " . mysqli_connect_error());
-    // }
-    
-    // $result = mysqli_query($link,"SELECT * FROM admin");
-
     //list semua data
     $sql = $db->prepare("SELECT * FROM admin ORDER BY id ASC");
     $sql->execute();
