@@ -40,7 +40,7 @@
                             <br><small><?php echo $_SESSION["admin"]["role"] == 0 ? 'Karyawan' : 'Manager'?></small>
                         </p>
 
-                        <p><a href="../logout.php">Logout</a></p>
+                        <p><a href=".../../../logout.php">Logout</a></p>
                     </div>
                 </div>
                 <div class="list-group">
