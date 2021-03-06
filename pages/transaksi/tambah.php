@@ -86,7 +86,7 @@ if(isset($_POST['tambah_transaksi'])){
                 <p>&larr; <a href="list.php">Kembali</a>
 
 
-                    <form  method="post" cation="" >
+                    <form  method="POST" action="" >
 
                         <div class="form-group">
                             <label for="kode_barang">Kode Transaksi</label>
