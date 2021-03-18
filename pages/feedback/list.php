@@ -48,7 +48,7 @@
                     <a href="../home.php" class="list-group-item list-group-item-action " aria-current="true">
                         Dashboard
                     </a>
-                    <a href="list.php" class="list-group-item list-group-item-action ">Produk</a>
+                    <a href="../produk/list.php" class="list-group-item list-group-item-action ">Produk</a>
                     <a href="../karyawan/list.php" class="list-group-item list-group-item-action ">Karyawan</a>
                     <a href="../transaksi/list.php" class="list-group-item list-group-item-action">Transaksi</a>
                     <a href="../pelanggan/list.php" class="list-group-item list-group-item-action">Pelanggan</a>
