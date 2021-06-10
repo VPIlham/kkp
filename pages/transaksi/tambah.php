@@ -27,10 +27,6 @@ if(isset($_POST['tambah_transaksi'])){
     $sqlKodeBarang->execute();
     $dataBarang = $sqlKodeBarang->fetch();
 
-    echo '<pre>';
-    print_r($sqlKodeBarang);
-    echo '</pre>';
-    
     $ambilKodeBarang = $dataBarang['kode_barang'];
     $ambilHargaBarang = $dataBarang['harga'];
     $dataStok = $dataBarang['stok'];
@@ -104,7 +100,7 @@ if(isset($_POST['tambah_transaksi'])){
                             <br><small><?php echo $_SESSION["admin"]["role"] == 0 ? 'Karyawan' : 'Manager'?></small>
                         </p>
 
-                        <p><a href=".../../../logout.php">Logout</a></p>
+                        <p><a href="../../../logout.php">Logout</a></p>
                     </div>
                 </div>
                 <div class="list-group">
@@ -148,7 +144,7 @@ if(isset($_POST['tambah_transaksi'])){
                                 <option selected disabled>Pilih Pelanggan</option>
 
                                 <?php foreach ($resultUser as $user) {?>
-                                <option value="<?php echo $user['id']  ?>"><?php echo $user['nama'] ?></option>
+                                <option value="<?php echo $user['id']  ?>"><?php echo $user['nama'] ?>  | <?php echo $user['nomor_telp'] ?></option>
                                 <?php } ?>
                                 
                             </select>
