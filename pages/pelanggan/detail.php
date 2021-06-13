@@ -114,8 +114,10 @@
                                 </div>
                             </div>
 
-                            <a class="btn btn-primary mt-3 mb-3 col-md-3" href="../pelanggan/list.php"  style="float:right !important"
+                            <a class="btn btn-primary mt-3 ml-3 mb-3 col-md-3" href="../pelanggan/list.php"  style="float:right !important"
                                > Kembali</a>
+                            <a class="btn btn-warning mt-3 mb-3 col-md-3" href="../pelanggan/cetak_satuan.php?id=<?php echo $data['id'] ?>"  style="float:right !important"
+                               > Cetak</a>
                         </form>
 
                     </div>

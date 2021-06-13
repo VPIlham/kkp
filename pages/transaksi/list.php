@@ -51,6 +51,7 @@
                     <a href="../produk/list.php" class="list-group-item list-group-item-action ">Produk</a>
                     <a href="../karyawan/list.php" class="list-group-item list-group-item-action ">Karyawan</a>
                     <a href="/list.php" class="list-group-item list-group-item-action active">Transaksi</a>
+                    <a href="../konfirmasi/list.php" class="list-group-item list-group-item-action ">Konfirmasi Bayar</a>
                     <a href="../pelanggan/list.php" class="list-group-item list-group-item-action">Pelanggan</a>
                     <a href="../feedback/list.php" class="list-group-item list-group-item-action">Feedback</a>
                 </div>

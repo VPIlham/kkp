@@ -19,7 +19,7 @@ $dataGambarBayar = $resultKonfirmasi[0]['image'];
 
 
 //panggil data barang
-$sqlPanggilBarang = $db->prepare("SELECT * FROM produk where id = $dataID ");
+$sqlPanggilBarang = $db->prepare("SELECT * FROM produk where kode_barang = $dataID ");
 $sqlPanggilBarang->execute();
 
 $resultBarang = $sqlPanggilBarang->fetchAll(PDO::FETCH_ASSOC);
@@ -34,7 +34,7 @@ $sqlPanggilTransaksi->execute();
 $resultTransaksi = $sqlPanggilTransaksi->fetchAll(PDO::FETCH_ASSOC);
 $status = $resultTransaksi[0]['status'];
 
-$resultKaryawan = null;
+$resultKaryawan = null; 
 
 //panggil data karyawan
 if ( $resultKonfirmasi[0]['id_admin'] != null){
@@ -75,7 +75,7 @@ if ( $resultKonfirmasi[0]['id_admin'] != null){
                             <br>Pelanggan</small>
                         </p>
 
-                        <p><a href="../../../logout.php">Logout</a></p>
+                        <p><a href="../../../../logout_user.php">Logout</a></p>
                     </div>
                 </div>
                 <div class="list-group">

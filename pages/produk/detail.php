@@ -121,7 +121,9 @@
                                 </div>
                             </div>
 
-                            <a href="../produk/list.php" class="mt-3 mb-3 btn btn-warning "
+                            <a href="../produk/cetak_satuan.php?id=<?php echo $data['id']?>" class="mt-3 mb-3 btn btn-warning "
+                                style="float:right !important;margin-right:15px !important">Cetak</a>
+                            <a href="../produk/list.php" class="mt-3 mb-3 btn btn-primary "
                                 style="float:right !important;margin-right:15px !important">Kembali</a>
                         </form>
                     </div>

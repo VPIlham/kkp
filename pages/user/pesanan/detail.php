@@ -42,7 +42,7 @@ $resultBarang = $sqlPanggilBarang->fetchAll(PDO::FETCH_ASSOC);
                             <br>Pelanggan</small>
                         </p>
 
-                        <p><a href="../../../logout.php">Logout</a></p>
+                        <p><a href="../../../logout_user.php">Logout</a></p>
                     </div>
                 </div>
                 <div class="list-group">
@@ -99,7 +99,7 @@ $resultBarang = $sqlPanggilBarang->fetchAll(PDO::FETCH_ASSOC);
                     <input type="submit" class="btn btn-success btn-block mt-3" name="tambah_transaksi" value="Simpan" required />
                     <a class="btn btn-danger btn-block mt-3" href="list.php">Kembali</a>
 
-                    <a href="" class="mt-3 btn btn-primary">CETAK</a>
+                    <a href="cetak.php?id=<?php echo $resultBarang[0]['id'];?>" class="mt-3 btn btn-primary">CETAK</a>
 
                 </form>
 

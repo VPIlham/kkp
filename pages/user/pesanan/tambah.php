@@ -25,7 +25,7 @@ if(isset($_POST['tambah_transaksi'])){
     $dataId = $resultBarang[0]['id'];
     $dataStok = $resultBarang[0]['stok'];
 
-
+        
             
     //menyiapkan query
     $sql = "INSERT INTO transaksi ( tiket_trx, produk_id, kode_barang, nama, jumlah_jual, harga, total_bayar, id_admin, status, id_pelanggan, created_at ) 
@@ -57,7 +57,7 @@ if(isset($_POST['tambah_transaksi'])){
 
     $paramsBB = array(
         ":tiket_trx" => $ran,
-        ":id_produk" => $dataId,
+        ":id_produk" => $ambilKodeBarang,
         ':id_pelanggan' =>   $_SESSION["user"]['id'],
         ":total_bayar" => $jumlah_jual  * $ambilHargaBarang,
     );
@@ -104,7 +104,7 @@ if(isset($_POST['tambah_transaksi'])){
                             <br>Pelanggan</small>
                         </p>
 
-                        <p><a href="../../../logout.php">Logout</a></p>
+                        <p><a href="../../../../logout_user.php">Logout</a></p>
                     </div>
                 </div>
                 <div class="list-group">

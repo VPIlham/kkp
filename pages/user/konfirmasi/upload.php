@@ -13,7 +13,7 @@ $sqlPanggilKonfirmasi->execute();
 
 $resultKonfirmasi = $sqlPanggilKonfirmasi->fetchAll(PDO::FETCH_ASSOC);
 
-$dataID = $resultKonfirmasi[0]['id_produk'];
+$dataID = $resultKonfirmasi[0]['kode_barang'];
 $dataTotalBayar = $resultKonfirmasi[0]['total_bayar'];
 
 
@@ -97,7 +97,7 @@ if (isset($_POST['upload_transaksi'])) {
                             <br>Pelanggan</small>
                         </p>
 
-                        <p><a href="../../../logout.php">Logout</a></p>
+                        <p><a href="../../../../logout_user.php">Logout</a></p>
                     </div>
                 </div>
                 <div class="list-group">
