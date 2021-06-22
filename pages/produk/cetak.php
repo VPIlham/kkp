@@ -4,7 +4,7 @@
     require_once("../../config.php");
 
     //list semua data
-    $sql = $db->prepare("SELECT * FROM produk ORDER BY id ASC");
+    $sql = $db->prepare("SELECT * FROM produk where id=:id ");
     $sql->execute();
 
     $result = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -24,6 +24,18 @@
 </head>
 
 <body>
+
+<div class="row">
+    <div class="col-md-5">
+        <img src="../../assets/images/logo.jpg" alt="" srcset="" style="width: 15%;">
+        <strong>PT Delima Karya Putra
+        </strong>
+
+    </div>
+    <div class="col-md-6 mt-3">
+        <span>Jl. Raya Bogor, Km. 40,5 Cibinong - Bogor <br>+62 819-0499-5866 </span>
+    </div>
+</div>
 
     <table class="table table-striped">
         <thead>

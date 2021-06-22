@@ -1,19 +1,19 @@
-<?php 
-    
-    require_once("../../../auth_user.php");
-    require_once("../../../config.php");
+<?php
+
+require_once("../../../auth_user.php");
+require_once("../../../config.php");
 
 
-    if(!isset($_GET['id'])){
-        die("Error: ID Tidak Dimasukkan");
-    }
+if (!isset($_GET['id'])) {
+    die("Error: ID Tidak Dimasukkan");
+}
 
-    //list semua data
-    $sql = $db->prepare("SELECT * FROM transaksi where id=:id ");
-    $sql->bindParam(":id", $_GET['id']);
-    $sql->execute();
+//list semua data
+$sql = $db->prepare("SELECT * FROM transaksi where id=:id ");
+$sql->bindParam(":id", $_GET['id']);
+$sql->execute();
 
-    $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+$result = $sql->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -25,11 +25,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>List Karyawan</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 </head>
 
 <body>
+<div class="row">
+    <div class="col-md-5">
+        <img src="../../../assets/images/logo.jpg" alt="" srcset="" style="width: 15%;">
+        <strong>PT Delima Karya Putra
+        </strong>
+
+    </div>
+    <div class="col-md-6 mt-3">
+        <span>Jl. Raya Bogor, Km. 40,5 Cibinong - Bogor <br>+62 819-0499-5866 </span>
+    </div>
+</div>
 
     <table class="table table-striped">
         <thead>
@@ -51,23 +61,23 @@
             </tr>
         </thead>
         <tbody>
-            <?php 
-                            $i = 1;
-                            foreach ($result as $user) {?>
-            <tr>
-                <th scope="row"><?php echo $i++ ?></th>
-                <td><?php echo $user['tiket_trx'] ?></td>
-                <td><?php echo $user['produk_id'] ?></td>
-                <td><?php echo $user['kode_barang'] ?></td>
-                <td><?php echo $user['nama'] ?></td>
-                <td><?php echo $user['jumlah_jual'] ?></td>
-                <td><?php echo $user['status'] ?></td>
-                <td><?php echo $user['harga'] ?></td>
-                <td><?php echo $user['total_bayar'] ?></td>
-                <td><?php echo $user['id_admin'] ?></td>
-                <td><?php echo $user['id_pelanggan'] ?></td>
-                <td><?php echo date("d/m/Y", strtotime($user['created_at']));  ?></td>
-            </tr>
+            <?php
+            $i = 1;
+            foreach ($result as $user) { ?>
+                <tr>
+                    <th scope="row"><?php echo $i++ ?></th>
+                    <td><?php echo $user['tiket_trx'] ?></td>
+                    <td><?php echo $user['produk_id'] ?></td>
+                    <td><?php echo $user['kode_barang'] ?></td>
+                    <td><?php echo $user['nama'] ?></td>
+                    <td><?php echo $user['jumlah_jual'] ?></td>
+                    <td><?php echo $user['status'] ?></td>
+                    <td><?php echo $user['harga'] ?></td>
+                    <td><?php echo $user['total_bayar'] ?></td>
+                    <td><?php echo $user['id_admin'] ?></td>
+                    <td><?php echo $user['id_pelanggan'] ?></td>
+                    <td><?php echo date("d/m/Y", strtotime($user['created_at']));  ?></td>
+                </tr>
             <?php } ?>
         </tbody>
     </table>
@@ -76,8 +86,7 @@
     <script>
         window.print();
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
     </script>
 </body>
 
