@@ -76,12 +76,13 @@
                                 <div class="limit-box">
                                     <nav class="main-menu">
                                         <ul class="menu-area-main">
-                                            <li class="active"><a href="#home">Home</a></li>
+                                            <li class="active"><a href="/index.php">Home</a></li>
                                             <li><a href="#about">About</a></li>
                                             <li><a href="#products">products</a></li>
                                             <li><a href="#gallery">gallery</a></li>
                                             <li><a href="#contact">Contact Us</a></li>
-                                            <li><a href="pages/login.php">Login</a></li>
+                                            <li><a href="pages/login_user.php">Login</a></li>
+                                            <li><a href="pages/login.php">Login Karyawan</a></li>
                                         </ul>
                                     </nav>
                                 </div>
